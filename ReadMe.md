@@ -3,13 +3,13 @@ CreativeZone adds creative mode to EndZone a World apart survival city builder g
 Plan, build, edit and shape up EndZone's post apocalyptic world and colony trapped within. Make perfect home for your settlers and explore high end buildings and game mechanics without resource constrains.
 
 # Features
-Spawn and upgrade buildings instantly without resources
+**Spawn and upgrade buildings instantly without resources**
 <br/>![Building](Docs/Building.gif) <br/>
-Destroy and replace buildings instantly
+**Destroy and replace buildings instantly**
 <br/>![Destruction](Docs/Destruction.gif) <br/>
-Build streets easily with advanced street builder
+**Build streets easily with advanced street builder**
 <br/>![Street building](Docs/StreetBuilding.gif) <br/>
-Adjust environment radiation levels
+**Adjust environment radiation levels**
 <br/>![Radiation](Docs/Radiation.gif) <br/>
 
 # Future Plans
@@ -18,9 +18,9 @@ Edit terrain/landscape and water location
 
 
 
-# Instalation
+# Installation
 1) Navigate to [TODO: Link] release page and download mod archive for your game version.
-2)  Extract mod archive to root of your game installation. <br/> If you use Steam, by default the game will be located at: "C:\Program Files (x86)\Steam\Steam\steamapps\common\Endzone - A World Apart\"
+2)  Extract mod archive to root of your game installation. <br/> If you use Steam, by default the game will be located at: <br/> "C:\Program Files (x86)\Steam\Steam\steamapps\common\Endzone - A World Apart\"
 2) Start game as usual
 3) You should see "Creative Zone" mark in left top corner.
 <br/>![Main menu](Docs/MainMenu.png)
