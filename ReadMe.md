@@ -13,10 +13,8 @@ Plan, build, edit and shape up EndZone's post apocalyptic world and colony trapp
 <br/>![Radiation](Docs/Radiation.gif) <br/>
 
 # Future Plans
-Spawn plants, trees, scrap piles and wildlife
+Spawn plants, trees, scrap piles and wildlife <br/>
 Edit terrain/landscape and water location
-
-
 
 # Installation
 1) Navigate to [TODO: Link] release page and download mod archive for your game version.
