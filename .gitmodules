@@ -1,0 +1,6 @@
+[submodule "Externals/Harmony"]
+	path = Externals/Harmony
+	url = https://github.com/pardeike/Harmony.git
+[submodule "Externals/UnityDoorstop"]
+	path = Externals/UnityDoorstop
+	url = https://github.com/NeighTools/UnityDoorstop.git
