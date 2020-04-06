@@ -53,7 +53,6 @@ namespace CreativeZone
             {
                 using(Log.Debug.OpenScope("Installing services", string.Empty))
                 {
-                    //Install<ITaskService, CreativeTaskService>();
                     Install<IEntityManager, CreativeEntityManager>();
                     Install<IStreetService, CreativeStreetService>();
                     Install<IBuildingService, CreativeBuildingService>();
@@ -72,14 +71,12 @@ namespace CreativeZone
         }
 
         private static void Install<TService, TImpl>() 
-            //where TImpl : CreativeService<TImpl, TExtendedService>
         {
             using (Log.Debug.OpenScope($"Installing {typeof(TImpl)} -> {typeof(TService)} ... ", "Done"))
             {
                 var vanilla = Core.Resolve<TService>();
                 var installMethod = typeof(TImpl).GetMethod("Install", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
                 installMethod.Invoke(null, new object[] { Harmony, vanilla, typeof(TService) });
-                //CreativeService<TImpl, TExtendedService>.Install(Harmony, vanilla, typeof(TService));
             }
         }
     }

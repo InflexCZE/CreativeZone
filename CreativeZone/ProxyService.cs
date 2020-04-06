@@ -189,8 +189,6 @@ namespace CreativeZone
                 proxy.AddInterfaceImplementation(fullInterfaceType);
 
                 var stubsField = AccessTools.Field(typeof(CreativeService<TInstance, TService>), "StubIndirections");
-                //var vanillaInstance = proxy.DefineField("__Vanilla", vanillaImplType, FieldAttributes.Private | FieldAttributes.InitOnly);
-                //var vanillaInstance = proxy.DefineField("__Vanilla", serviceInterfaceType, FieldAttributes.Public | FieldAttributes.InitOnly);
                 var vanillaInstance = proxy.DefineField("__Vanilla", vanillaImplType, FieldAttributes.Public | FieldAttributes.InitOnly);
 
                 var proxyDelegates = new List<(Delegate Delegate, FieldInfo Field)>();
