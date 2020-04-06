@@ -17,8 +17,8 @@ Spawn plants, trees, scrap piles and wildlife <br/>
 Edit terrain/landscape and water location
 
 # Installation
-1) Navigate to [TODO: Link] release page and download mod archive for your game version.
-2)  Extract mod archive to root of your game installation. <br/> If you use Steam, by default the game will be located at: <br/> "C:\Program Files (x86)\Steam\Steam\steamapps\common\Endzone - A World Apart\"
+1) Navigate to ([Releases page](https://github.com/InflexCZE/CreativeZone/releases)) and download mod archive for your game version.
+2) Extract mod archive to root of your game installation. <br/> If you use Steam, by default the game will be located at: <br/> "C:\Program Files (x86)\Steam\Steam\steamapps\common\Endzone - A World Apart\"
 2) Start game as usual
 3) You should see "Creative Zone" mark in left top corner.
 <br/>![Main menu](Docs/MainMenu.png)
