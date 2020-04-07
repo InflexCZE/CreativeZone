@@ -9,6 +9,7 @@ using CreativeZone.Utils;
 using ECS;
 using HarmonyLib;
 using Service;
+using Service.Achievement;
 using Service.Building;
 using Service.Localization;
 using Service.Street;
@@ -56,6 +57,7 @@ namespace CreativeZone
                     Install<IEntityManager, CreativeEntityManager>();
                     Install<IStreetService, CreativeStreetService>();
                     Install<IBuildingService, CreativeBuildingService>();
+                    Install<IAchievementService, CreativeAchievementService>();
                     Install<ILocalizationService, CreativeLocalizationService>();
                     Install<IUserWorldTasksService, CreativeUserWorldTaskService>();
                 }
