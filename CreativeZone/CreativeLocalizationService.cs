@@ -13,7 +13,7 @@ namespace CreativeZone
     public class CreativeLocalizationService : CreativeService<CreativeLocalizationService, ILocalizationService>
     {
         [HarmonyReplace]
-        public void Localize(Keys locaKey, TextMeshProUGUI textOutput, Dictionary<string, string> replacements = null, ReplacementStyle replacementStyle = null)
+        public void Localize(Keys locaKey, TextMeshProUGUI textOutput, Dictionary<string, string> replacements, ReplacementStyle replacementStyle)
         {
             this.Vanilla.Localize(locaKey, textOutput, replacements, replacementStyle);
 
@@ -31,7 +31,7 @@ namespace CreativeZone
         }
 
         [HarmonyReplace]
-        public string GetLocalization(Keys locaKey, Dictionary<string, string> replacements = null)
+        public string GetLocalization(Keys locaKey, Dictionary<string, string> replacements, ReplacementStyle replacementStyle)
         {
             var text = this.Vanilla.GetLocalization(locaKey, replacements);
             
