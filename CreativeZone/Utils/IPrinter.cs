@@ -190,6 +190,12 @@ namespace CreativeZone.Utils
         private bool InsertIndent;
         private int CurrentIndentLevel;
 
+        public bool AutoCommit
+        {
+            get => this.File.AutoFlush;
+            set => this.File.AutoFlush = value;
+        }
+
         public FilePrinter(string path)
         {
             this.File = new StreamWriter(System.IO.File.OpenWrite(path));

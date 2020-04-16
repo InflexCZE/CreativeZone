@@ -16,7 +16,10 @@ namespace CreativeZone.Utils
         {
             var defaultFile = new FilePrinter("CreativeZone.log");
             var debugFile = new FilePrinter("CreativeZone_Debug.log");
-            var errorFile = new FilePrinter("CreativeZone_Error.log");
+            var errorFile = new FilePrinter("CreativeZone_Error.log")
+            {
+                AutoCommit = true
+            };
 
             Debug = debugFile;
             Default = CompoundPrinter.Make(defaultFile, debugFile);
