@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using CreativeZone.Utils;
 using FlatBuffers;
+using PatchZone.Hatch;
+using PatchZone.Hatch.Annotations;
 using Service.Localization;
 using TMPro;
 
-namespace CreativeZone
+namespace CreativeZone.Services
 {
-    public class CreativeLocalizationService : CreativeService<CreativeLocalizationService, ILocalizationService>
+    public class CreativeLocalizationService : ProxyService<CreativeLocalizationService, ILocalizationService>
     {
-        [HarmonyReplace]
+        [LogicProxy]
         public void Localize(Keys locaKey, TextMeshProUGUI textOutput, Dictionary<string, string> replacements, ReplacementStyle replacementStyle)
         {
             this.Vanilla.Localize(locaKey, textOutput, replacements, replacementStyle);
@@ -30,7 +32,7 @@ namespace CreativeZone
             }
         }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public string GetLocalization(Keys locaKey, Dictionary<string, string> replacements, ReplacementStyle replacementStyle)
         {
             var text = this.Vanilla.GetLocalization(locaKey, replacements);

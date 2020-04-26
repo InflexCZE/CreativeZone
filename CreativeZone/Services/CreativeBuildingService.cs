@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using ECS;
 using FlatBuffers;
+using PatchZone.Hatch;
+using PatchZone.Hatch.Annotations;
 using Service.Building;
 using Service.Radiation;
 using UnityEngine;
 
-namespace CreativeZone
+namespace CreativeZone.Services
 {
-    public class CreativeBuildingService : CreativeService<CreativeBuildingService, IBuildingService>
+    public class CreativeBuildingService : ProxyService<CreativeBuildingService, IBuildingService>
     {
-        [HarmonyReplace]
+        [LogicProxy]
         public UID? CreateBuilding(BuildingType buildingType, GridPosition position, ObjectRotation rotation, bool _, Action<UID> additionalAction, List<ResourceAmount> initialInventoryData, bool putInitialInventoryInPreProduction)
         {
             try
@@ -27,14 +29,14 @@ namespace CreativeZone
             }
         }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void RequestBuildingDestruction(UID buildingEntity)
         {
             ServiceMapper.uIService.CloseAllInspectors();
             ServiceMapper.sessionService.GetSessionData().Destroy(buildingEntity);
         }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void RequestBuildingUpgrade(UID buildingEntity, BuildingType upgradeToBuildingType)
         {
             var grid = ServiceMapper.gridService;

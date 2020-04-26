@@ -7,15 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using CreativeZone.Utils;
 using FlatBuffers;
+using PatchZone.Hatch;
+using PatchZone.Hatch.Annotations;
 using Service.Audio;
 using Service.Building;
 using Service.Grid;
 using Service.Street;
 using Service.UserInput;
 
-namespace CreativeZone
+namespace CreativeZone.Services
 {
-    class CreativeStreetService : CreativeService<CreativeStreetService, CreativeStreetService.IExtendedStreetService>
+    class CreativeStreetService : ProxyService<CreativeStreetService, CreativeStreetService.IExtendedStreetService>
     {
         public interface IExtendedStreetService : IStreetService
         {
@@ -23,10 +25,10 @@ namespace CreativeZone
             bool CanBuildStreet(int cellX, int cellY);
         }
 
-        [HarmonyProperty]
+        [LogicProxy]
         public int? StreetStartX { get; set; }
 
-        [HarmonyProperty]
+        [LogicProxy]
         public int? StreetStartY { get; set; }
 
         private StreetPlanMode PlanningMode = StreetPlanMode.X;
@@ -47,7 +49,7 @@ namespace CreativeZone
             MODE_COUNT,
         }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void AcceptStreetPlan(List<StreetPosition> streetPath = null)
         {
             if(streetPath == null)
@@ -82,7 +84,7 @@ namespace CreativeZone
             ServiceMapper.audioService.PlaySoundUI(SoundClip.Misc_PlaceBuilding);
         }
 
-        [HarmonyReplace]
+        [LogicProxy]
         private void FindStreetPath(int startCellX, int startCellY, int endCellX, int endCellY)
         {
             if (ServiceMapper.userInputService.ButtonUp(Button.RotateBuildingKeyboard))
