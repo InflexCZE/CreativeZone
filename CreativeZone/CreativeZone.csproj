@@ -7,34 +7,41 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.0.0.8" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
   <PropertyGroup>
-    <GameDir>D:\Games\Steam\steamapps\common\Endzone - A World Apart\Endzone_Data\Managed\</GameDir>
+    <GameDir>D:\Games\Steam\steamapps\common\Endzone - A World Apart\</GameDir>
+    
+    <GameRefsDir>$(GameDir)Endzone_Data\Managed\</GameRefsDir>
+    
+    <PatchZoneDir>$(GameDir)PatchZone\</PatchZoneDir>
+    <PatchZoneCreativeZoneDir>$(PatchZoneDir)Mods\87d497aa-8410-444f-915f-54f7bb545a9b\</PatchZoneCreativeZoneDir>
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="PatchZone.Hatch">
+      <HintPath>$(PatchZoneDir)PatchZone.Hatch.dll</HintPath>
+    </Reference>
     <Reference Include="AfterTheEnd">
-      <HintPath>$(GameDir)AfterTheEnd.dll</HintPath>
+      <HintPath>$(GameRefsDir)AfterTheEnd.dll</HintPath>
     </Reference>
     <Reference Include="uGameFramework">
-      <HintPath>$(GameDir)uGameFramework.dll</HintPath>
+      <HintPath>$(GameRefsDir)uGameFramework.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>$(GameDir)Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(GameRefsDir)Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(GameDir)UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(GameRefsDir)UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="Zenject-usage">
-      <HintPath>$(GameDir)Zenject-usage.dll</HintPath>
+      <HintPath>$(GameRefsDir)Zenject-usage.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(GameDir)&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)0Harmony.dll&quot; &quot;$(GameDir)&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)System.ValueTuple.dll&quot; &quot;$(GameDir)&quot;" />
+    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(PatchZoneCreativeZoneDir)&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)System.ValueTuple.dll&quot; &quot;$(PatchZoneCreativeZoneDir)&quot;" />
   </Target>
 
 </Project>

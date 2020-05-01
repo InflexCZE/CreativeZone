@@ -5,16 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using ECS;
 using FlatBuffers;
+using PatchZone.Hatch;
+using PatchZone.Hatch.Annotations;
 
-namespace CreativeZone
+namespace CreativeZone.Services
 {
-    class CreativeEntityManager : CreativeService<CreativeEntityManager, IEntityManager>
+    class CreativeEntityManager : ProxyService<CreativeEntityManager, IEntityManager>
     {
         public int SuppressDestroyEntity;
 
         public event Action<UID> OnEntityDestroyed;
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void DestroyEntity(ref UID entity)
         {
             if(this.SuppressDestroyEntity == 0)
@@ -27,7 +29,7 @@ namespace CreativeZone
 
         private readonly Queue<Action> InvokeQueue = new Queue<Action>();
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void Tick(float deltaTime)
         {
             this.Vanilla.Tick(deltaTime);

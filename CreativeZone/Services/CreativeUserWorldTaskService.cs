@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using ECS;
 using FlatBuffers;
+using PatchZone.Hatch;
+using PatchZone.Hatch.Annotations;
 using Service.Building;
 using Service.UserWorldTasks;
 
-namespace CreativeZone
+namespace CreativeZone.Services
 {
-    public class CreativeUserWorldTaskService : CreativeService<CreativeUserWorldTaskService, IUserWorldTasksService>
+    public class CreativeUserWorldTaskService : ProxyService<CreativeUserWorldTaskService, IUserWorldTasksService>
     {
-        [HarmonyReplace]
+        [LogicProxy]
         public void _CreateRemoveStreetTasks(int startCellX, int startCellY, int endCellX, int endCellY)
         {
             for (int x = startCellX; x < endCellX; x++)
@@ -22,7 +24,7 @@ namespace CreativeZone
             }
         }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void _CreateRemoveRadiationTasks(int startCellX, int startCellY, int endCellX, int endCellY)
         {
             for (int x = startCellX; x < endCellX; x++)
@@ -32,7 +34,7 @@ namespace CreativeZone
             }
         }
 
-        [HarmonyReplace] //Aka add radiation
+        [LogicProxy] //Aka add radiation
         public void _KillAllRemoveRadiationWorldTasks(int startCellX, int startCellY, int endCellX, int endCellY)
         {
             for (int x = startCellX; x < endCellX; x++)
@@ -42,7 +44,7 @@ namespace CreativeZone
             }
         }
 
-        [HarmonyProperty]
+        [LogicProxy]
         public bool IsDragging { get; set; }
 
         /*
@@ -53,7 +55,7 @@ namespace CreativeZone
         }
         */
 
-        [HarmonyReplace]
+        //[LogicProxy]
         private void CreateGatherResourcesTasks(List<UID> _, ResourceComponent.ResourceType? __)
         {
             //TODO: Don't stop mode on click

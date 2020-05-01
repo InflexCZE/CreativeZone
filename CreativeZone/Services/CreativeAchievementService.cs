@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PatchZone.Hatch;
+using PatchZone.Hatch.Annotations;
 using Service.Achievement;
 
-namespace CreativeZone
+namespace CreativeZone.Services
 {
     /// <summary>
     /// Disable achievement progress so ppl are not tempted to cheat with creative enabled
     /// </summary>
-    public class CreativeAchievementService : CreativeService<CreativeAchievementService, IAchievementService>
+    public class CreativeAchievementService : ProxyService<CreativeAchievementService, IAchievementService>
     {
-        [HarmonyReplace]
+        [LogicProxy]
         public void Unlock(Service.Achievement.Achievement achievement)
         { }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void UnlockByIdentifier(string identifier)
         { }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void Progress(Service.Achievement.Achievement achievement, int progress = 1)
         { }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void ProgressByIdentifier(string identifier, int progress = 1)
         { }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void Tick(float deltaTime)
         { }
 
-        [HarmonyReplace]
+        [LogicProxy]
         public void ActiveSessionTick(float deltaTime)
         { }
     }
