@@ -17,16 +17,17 @@ Spawn plants, trees, scrap piles and wildlife <br/>
 Edit terrain/landscape and water location
 
 # Installation
-1) Navigate to [Releases page](https://github.com/InflexCZE/CreativeZone/releases) and download mod archive for your game version.
-2) Extract mod archive to root of your game installation. <br/> If you use Steam, by default the game will be located at: <br/> "C:\Program Files (x86)\Steam\Steam\steamapps\common\Endzone - A World Apart\"
-2) Start game as usual
-3) You should see "Creative Zone" mark in left top corner.
+1) Fist of all you need to obtain mod loader PatchZone. To get it follow [Installation guide](https://github.com/InflexCZE/PatchZone#installation).
+2) Start PatchZone and add CreativeZone (github.com/InflexCZE/CreativeZone) to the "Active mods" list.
+3) Start game as usual
+4) You should see "Creative Zone" mark in left top corner.
 <br/>![Main menu](Docs/MainMenu.png)
 
 In case of any issues, cleanup your game installation, make sure you have correct version of the mod and repeat installation process.
 
 # How to disable CreativeZone
-In order to return the game back to vanilla state, navigate to your game installation and delete all mod files. CreativeZone doesn't modify vanilla game files so it is not necessary to reinstall the game or perform game integrity verification (Steam).
+In order to return the game back to vanilla state, open PatchZone and disable CreativeZone mod. </br>
+CreativeZone doesn't modify vanilla game files so it is not necessary to reinstall the game or perform game integrity verification (Steam).
 
 # Contribution Welcomed
 
