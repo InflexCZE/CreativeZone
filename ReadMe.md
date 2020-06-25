@@ -19,7 +19,7 @@ Edit terrain/landscape and water location
 # Installation
 1) Fist of all you need to obtain mod loader PatchZone. To get it follow [Installation guide](https://github.com/InflexCZE/PatchZone#installation).
 2) Start PatchZone and add CreativeZone (github.com/InflexCZE/CreativeZone) to the "Active mods" list.
-3) Start game as usual
+3) Close PatchZone and start the game as usual
 4) You should see "Creative Zone" mark in left top corner.
 <br/>![Main menu](Docs/MainMenu.png)
 
