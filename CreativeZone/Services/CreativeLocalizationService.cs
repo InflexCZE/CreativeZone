@@ -15,9 +15,9 @@ namespace CreativeZone.Services
     public class CreativeLocalizationService : ProxyService<CreativeLocalizationService, ILocalizationService>
     {
         [LogicProxy]
-        public void Localize(Keys locaKey, TextMeshProUGUI textOutput, Dictionary<string, string> replacements, ReplacementStyle replacementStyle)
+        public bool Localize(Keys locaKey, TextMeshProUGUI textOutput, Dictionary<string, string> replacements, ReplacementStyle replacementStyle)
         {
-            this.Vanilla.Localize(locaKey, textOutput, replacements, replacementStyle);
+            var result = this.Vanilla.Localize(locaKey, textOutput, replacements, replacementStyle);
 
             if
             (
@@ -30,6 +30,8 @@ namespace CreativeZone.Services
                 text += "[Creative Zone]";
                 textOutput.text = text;
             }
+
+            return result;
         }
 
         [LogicProxy]

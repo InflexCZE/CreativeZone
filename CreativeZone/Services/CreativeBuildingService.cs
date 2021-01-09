@@ -9,6 +9,7 @@ using PatchZone.Hatch;
 using PatchZone.Hatch.Annotations;
 using Service.Building;
 using Service.Radiation;
+using Service.UI;
 using UnityEngine;
 
 namespace CreativeZone.Services
@@ -16,12 +17,12 @@ namespace CreativeZone.Services
     public class CreativeBuildingService : ProxyService<CreativeBuildingService, IBuildingService>
     {
         [LogicProxy]
-        public UID? CreateBuilding(BuildingType buildingType, GridPosition position, ObjectRotation rotation, bool _, Action<UID> additionalAction, List<ResourceAmount> initialInventoryData, bool putInitialInventoryInPreProduction)
+        public UID? CreateBuilding(BuildingType buildingType, GridPosition position, ObjectRotation rotation, bool _, int visualID = -1, Action<UID> additionalAction = null, List<InventoryComponent2.ResourceAmount> initialInventoryData = null, bool putInitialInventoryInPreProduction = false)
         {
             try
             {
                 CreativeEntityManager.Instance.SuppressDestroyEntity++;
-                return this.Vanilla.CreateBuilding(buildingType, position, rotation, true, additionalAction, initialInventoryData, putInitialInventoryInPreProduction);
+                return this.Vanilla.CreateBuilding(buildingType, position, rotation, true, visualID, additionalAction, initialInventoryData, putInitialInventoryInPreProduction);
             }
             finally
             {
@@ -32,7 +33,7 @@ namespace CreativeZone.Services
         [LogicProxy]
         public void RequestBuildingDestruction(UID buildingEntity)
         {
-            ServiceMapper.uIService.CloseAllInspectors();
+            ServiceMapper.uIService.CloseWindow(WindowTypeEnum.InspectorWindow);
             ServiceMapper.sessionService.GetSessionData().Destroy(buildingEntity);
         }
 
@@ -54,7 +55,7 @@ namespace CreativeZone.Services
 
             CreativeEntityManager.Instance.Invoke(() =>
             {
-                CreateBuilding(upgradeToBuildingType, position, rotation, default, default, default, default);
+                CreateBuilding(upgradeToBuildingType, position, rotation, default);
             });
         }
     }

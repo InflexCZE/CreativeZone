@@ -15,16 +15,6 @@ namespace CreativeZone.Services
     public class CreativeUserWorldTaskService : ProxyService<CreativeUserWorldTaskService, IUserWorldTasksService>
     {
         [LogicProxy]
-        public void _CreateRemoveStreetTasks(int startCellX, int startCellY, int endCellX, int endCellY)
-        {
-            for (int x = startCellX; x < endCellX; x++)
-            for (int y = startCellY; y < endCellY; y++)
-            {
-                ServiceMapper.streetService.RemoveStreet(x, y);
-            }
-        }
-
-        [LogicProxy]
         public void _CreateRemoveRadiationTasks(int startCellX, int startCellY, int endCellX, int endCellY)
         {
             for (int x = startCellX; x < endCellX; x++)
@@ -44,8 +34,8 @@ namespace CreativeZone.Services
             }
         }
 
-        [LogicProxy]
-        public bool IsDragging { get; set; }
+        //[LogicProxy]
+        //public bool IsDragging { get; set; }
 
         /*
         [HarmonyExpose]
@@ -59,7 +49,7 @@ namespace CreativeZone.Services
         private void CreateGatherResourcesTasks(List<UID> _, ResourceComponent.ResourceType? __)
         {
             //TODO: Don't stop mode on click
-            this.IsDragging = true;
+            //this.IsDragging = true;
 
             /*
             this.cellDrop = this.gridService.GetGridPositionForScreenPoint(this.userInputService.GetPointerPosition());

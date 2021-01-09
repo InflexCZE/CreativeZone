@@ -22,14 +22,12 @@ namespace CreativeZone.Services
         public interface IExtendedStreetService : IStreetService
         {
             bool HasStreet(int cellX, int cellY);
-            bool CanBuildStreet(int cellX, int cellY);
+            bool CanBuildStreet(int cellX, int cellY, BuildingType streetType);
+
+            int? StreetStartX { get; set; }
+            int? StreetStartY { get; set; }
+            BuildingType CurrentStreetType { get; }
         }
-
-        [LogicProxy]
-        public int? StreetStartX { get; set; }
-
-        [LogicProxy]
-        public int? StreetStartY { get; set; }
 
         private StreetPlanMode PlanningMode = StreetPlanMode.X;
 
@@ -50,6 +48,16 @@ namespace CreativeZone.Services
         }
 
         [LogicProxy]
+        public void _CreateRemoveStreetTasks(int startCellX, int startCellY, int endCellX, int endCellY)
+        {
+            for (int x = startCellX; x < endCellX; x++)
+            for (int y = startCellY; y < endCellY; y++)
+            {
+                ServiceMapper.streetService.RemoveStreet(x, y);
+            }
+        }
+
+        [LogicProxy]
         public void AcceptStreetPlan(List<StreetPosition> streetPath = null)
         {
             if(streetPath == null)
@@ -65,6 +73,7 @@ namespace CreativeZone.Services
                     return;
             }
             
+            var streetType = this.Vanilla.CurrentStreetType;
             foreach(var tile in streetPath)
             {
                 if(tile.hasStreet)
@@ -74,20 +83,20 @@ namespace CreativeZone.Services
 
                 if(tile.canBuildStreet || tile.hasStreet)
                 {
-                    this.Vanilla.CreateStreet(tile.x, tile.y, BuildingType.RoofedStreet);
+                    this.Vanilla.CreateStreet(tile.x, tile.y, streetType);
                 }
             }
 
-            this.StreetStartX = this.CurrentPlanEndX;
-            this.StreetStartY = this.CurrentPlanEndY;
+            this.Vanilla.StreetStartX = this.CurrentPlanEndX;
+            this.Vanilla.StreetStartY = this.CurrentPlanEndY;
 
             ServiceMapper.audioService.PlaySoundUI(SoundClip.Misc_PlaceBuilding);
         }
 
         [LogicProxy]
-        private void FindStreetPath(int startCellX, int startCellY, int endCellX, int endCellY)
+        private void FindStreetPath(int startCellX, int startCellY, int endCellX, int endCellY, BuildingType streeType)
         {
-            if (ServiceMapper.userInputService.ButtonUp(Button.RotateBuildingKeyboard))
+            if (ServiceMapper.userInputService.ButtonUp(ActionType.RotateBuilding))
             {
                 var nextMode = this.PlanningMode + 1;
 
@@ -230,7 +239,7 @@ namespace CreativeZone.Services
                 (
                     _x, 
                     _y, 
-                    this.Vanilla.CanBuildStreet(_x, _y), 
+                    this.Vanilla.CanBuildStreet(_x, _y, streeType), 
                     this.Vanilla.HasStreet(_x, _y)
                 ));
             }
