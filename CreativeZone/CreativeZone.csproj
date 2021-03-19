@@ -6,10 +6,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
-
   <PropertyGroup>
     <GameDir>D:\Games\Steam\steamapps\common\Endzone - A World Apart\</GameDir>
     
@@ -41,7 +37,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(PatchZoneCreativeZoneDir)&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)System.ValueTuple.dll&quot; &quot;$(PatchZoneCreativeZoneDir)&quot;" />
+    <!--<Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(PatchZoneCreativeZoneDir)&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)System.ValueTuple.dll&quot; &quot;$(PatchZoneCreativeZoneDir)&quot;" />-->
   </Target>
 
 </Project>
