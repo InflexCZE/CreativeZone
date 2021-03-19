@@ -94,7 +94,7 @@ namespace CreativeZone.Services
         }
 
         [LogicProxy]
-        private void FindStreetPath(int startCellX, int startCellY, int endCellX, int endCellY, BuildingType streeType)
+        private void FindStreetPath(int startCellX, int startCellY, int endCellX, int endCellY, BuildingType streeType, bool recalculatePath)
         {
             if (ServiceMapper.userInputService.ButtonUp(ActionType.RotateBuilding))
             {

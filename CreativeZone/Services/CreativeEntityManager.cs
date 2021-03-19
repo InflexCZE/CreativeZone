@@ -30,9 +30,9 @@ namespace CreativeZone.Services
         private readonly Queue<Action> InvokeQueue = new Queue<Action>();
 
         [LogicProxy]
-        public void Tick(float deltaTime)
+        public void Tick(float deltaTime, float unscaledTime, float systemScaled)
         {
-            this.Vanilla.Tick(deltaTime);
+            this.Vanilla.Tick(deltaTime, unscaledTime, systemScaled);
 
             var count = this.InvokeQueue.Count;
             for(int i = 0; i < count; i++)
